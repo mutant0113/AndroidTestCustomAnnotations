@@ -11,6 +11,7 @@ import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.rule.ActivityTestRule
 import android.support.test.rule.GrantPermissionRule
 import android.support.test.runner.AndroidJUnit4
+import com.mutant.androidtestcustomannotations.annotation.Rat
 import org.hamcrest.CoreMatchers.not
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -43,7 +44,7 @@ class ExampleInstrumentedTest {
         context = InstrumentationRegistry.getTargetContext()
     }
 
-    @Test
+    @Test @Rat
     fun useAppContext() {
         assertEquals("com.mutant.androidtestcustomannotations", context.packageName)
     }
@@ -63,7 +64,7 @@ class ExampleInstrumentedTest {
         onView(withId(R.id.password)).check(matches(hasErrorText(context.getString(R.string.error_incorrect_password))))
     }
 
-    @Test
+    @Test @Rat
     fun validEmailAndPassword_login_successfully() {
         onView(withId(R.id.email)).check(matches(isDisplayed())).perform(replaceText("foo@example.com"))
         onView(withId(R.id.password)).check(matches(isDisplayed())).perform(replaceText("hello"))
