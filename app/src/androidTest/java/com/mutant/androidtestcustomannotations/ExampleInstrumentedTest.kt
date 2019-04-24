@@ -7,18 +7,21 @@ import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.action.ViewActions.replaceText
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.RootMatchers.withDecorView
-import android.support.test.espresso.matcher.ViewMatchers.*
+import android.support.test.espresso.matcher.ViewMatchers.hasErrorText
+import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
+import android.support.test.espresso.matcher.ViewMatchers.withId
+import android.support.test.espresso.matcher.ViewMatchers.withText
 import android.support.test.rule.ActivityTestRule
 import android.support.test.rule.GrantPermissionRule
 import android.support.test.runner.AndroidJUnit4
 import com.mutant.androidtestcustomannotations.annotation.Rat
+import com.mutant.androidtestcustomannotations.annotation.UITestLongTime
 import org.hamcrest.CoreMatchers.not
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -45,7 +48,12 @@ class ExampleInstrumentedTest {
     }
 
     @Test @Rat
-    fun useAppContext() {
+    fun runRat() {
+        assertEquals("com.mutant.androidtestcustomannotations", context.packageName)
+    }
+
+    @Test @UITestLongTime
+    fun runLongTimeTest() {
         assertEquals("com.mutant.androidtestcustomannotations", context.packageName)
     }
 
